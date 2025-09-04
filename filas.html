@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filas</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Container geral */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* Layout principal */
+.container {
+  display: flex;
+}
+
+
+/* Área das filas */
+.queues-container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr; /* coloque 1fr 1fr para lado a lado */
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Cada bloco de fila */
+.queue {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.queue h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Seção de pesquisa */
+.search-section {
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.search-section input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 250px;
+}
+
+.btn-search {
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-search:hover {
+  background-color: #005bb5;
+}
+
+/* CNES */
+.cnes-info {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* Tabelas */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 13px;
+}
+
+.data-table th {
+  background-color: #f8f8f8;
+  color: #333;
+  font-weight: bold;
+}
+
+.actions-header {
+  text-align: right;
+  padding-right: 20px;
+}
+
+.table-actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.icon-link img {
+  width: 16px;
+  height: 16px;
+  margin: 0 5px;
+}
+
+/* Rodapé das filas */
+.footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.btn-primary {
+  background-color: #2a2f74;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #1f2358;
+}
+
+/* Barra inferior */
+.bottom-bar {
+  background-color: #f1f1f1;
+  padding: 10px 20px;
+  text-align: left;
+}
+
+.btn-secondary {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: #ddd;
+}
+
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="gov-logo">
+      <img src="img/LOGO.png" alt="Logo do SICA">
+      <span>SICA</span>
+    </div>
+    <nav>
+      <a href="#">PRIVACIDADE</a>
+      <a href="#">SOBRE</a>
+    </nav>
+    <div class="user-info">
+      <div class="user-name">
+        <span>Adrielly dos Reis Carvalhedo</span><br>
+        <small>Sistema Integrado de Crianças Acolidas | EMULTI</small>
+      </div>
+      <div class="user-dropdown">
+        <a href="#">Alterar senha</a>
+        <a href="#">Sobre</a>
+        <a href="#">Termos de uso</a>
+        <a href="index.html">Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <aside class="sidebar">
+      <ul>
+        <li><span>👤</span><a href="TelaFila.html"><span class="label">Atendimentos</span></a></li>
+        <li><span>📋</span><span class="label">Cadastrar</span></li>
+        <li><span>🪪</span><a href="cidadao.html"><span class="label">Cidadão</span></a></li>
+        <li><span>👥</span><a href="filas.html"><span class="label">Filas</span></a></li>
+      </ul>
+    </aside>
+
+    <!-- Container das filas -->
+    <div class="queues-container">
+      <!-- Primeira fila -->
+      <section class="queue">
+        <h3>Fila para Terapias</h3>
+        <div class="search-section">
+          <div class="input-group">
+            <label for="Profissional">Nome, CID, Profissional</label>
+            <input type="text" id="cnsProfissional">
+          </div>
+          <button class="btn-search">🔍 Pesquisar</button>
+        </div>
+        <div class="cnes-info">
+          <strong>ESPECIALISTAS:</strong> TODOS
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>nº</th>
+              <th>Nome</th>
+              <th>CID</th>
+              <th>Especialista</th>
+              <th>Data de adição</th>
+              <th class="actions-header"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01</td>
+              <td>Deivison Furtado Cabral</td>
+              <td>223208</td>
+              <td>Psicólogo</td>
+              <td>29/08/2025</td>
+              <td class="table-actions">
+                <a href="#" class="icon-link"><img src="img/editar.png" alt="Editar"></a>
+                <a href="#" class="icon-link"><img src="img/excluir.png" alt="Excluir"></a>
+              </td>
+            </tr>
+            <tr>
+              <td>02</td>
+              <td>Iza Daniela</td>
+              <td>223208</td>
+              <td>Neuro</td>
+              <td>30/08/2025</td>
+              <td class="table-actions">
+                <a href="#" class="icon-link"><img src="img/editar.png" alt="Editar"></a>
+                <a href="#" class="icon-link"><img src="img/excluir.png" alt="Excluir"></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="footer-actions">
+          <button class="btn-primary">Adicionar</button>
+        </div>
+      </section>
+
+      <!-- Segunda fila -->
+      <section class="queue">
+        <h3>Fila para Avaliação</h3>
+        <div class="search-section">
+          <div class="input-group">
+            <label for="Profissional">Nome, CID, Profissional</label>
+            <input type="text" id="cnsProfissional">
+          </div>
+          <button class="btn-search">🔍 Pesquisar</button>
+        </div>
+        <div class="cnes-info">
+          <strong>ESPECIALISTAS:</strong> TODOS
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>nº</th>
+              <th>Nome</th>
+              <th>CID</th>
+              <th>Especialista</th>
+              <th>Data de adição</th>
+              <th class="actions-header"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01</td>
+              <td>Deivison Furtado Cabral</td>
+              <td>223208</td>
+              <td>Psicólogo</td>
+              <td>29/08/2025</td>
+              <td class="table-actions">
+                <a href="#" class="icon-link"><img src="img/editar.png" alt="Editar"></a>
+                <a href="#" class="icon-link"><img src="img/excluir.png" alt="Excluir"></a>
+              </td>
+            </tr>
+            <tr>
+              <td>02</td>
+              <td>Iza Daniela</td>
+              <td>223208</td>
+              <td>Neuro</td>
+              <td>30/08/2025</td>
+              <td class="table-actions">
+                <a href="#" class="icon-link"><img src="img/editar.png" alt="Editar"></a>
+                <a href="#" class="icon-link"><img src="img/excluir.png" alt="Excluir"></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="footer-actions">
+          <button class="btn-primary">Adicionar</button>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

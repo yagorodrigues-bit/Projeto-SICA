@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cidadão</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    
+/*********************
+Tela cidadão
+*********************/
+
+/* ... (o restante do código de filtros e outros estilos deve ser mantido) ... */
+
+/* Card cidadão */
+.citizen-card {
+  background: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-left: 4px solid #2a2f74;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  
+  /* Flexbox para alinhar o conteúdo principal e as ações na mesma linha */
+  display: flex;
+  justify-content: space-between; /* Empurra os itens para os lados */
+  align-items: flex-start; /* Alinha os itens ao topo */
+  flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha em telas pequenas */
+}
+
+/* Novo contêiner para o nome e os detalhes */
+.citizen-info {
+  display: flex;
+  flex-direction: column; /* Alinha o nome e os detalhes em coluna */
+  flex-grow: 1; /* Permite que este contêiner ocupe o espaço restante */
+}
+
+.citizen-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Contêiner das colunas de detalhes */
+.citizen-details {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.details-column {
+  flex-basis: calc(50% - 10px);
+  display: flex;
+  flex-direction: column;
+}
+
+.citizen-card p {
+  margin: 3px 0;
+  font-size: 14px;
+}
+
+/* Container de ações */
+.citizen-card .actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px; /* Adiciona um espaçamento entre o conteúdo e os botões */
+  flex-shrink: 0; /* Previne que o item de ações encolha */
+}
+
+/* Botões */
+.citizen-card button {
+  border: none;
+  background: #eee;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.citizen-card button:hover {
+  background: #ddd;
+}
+
+/* Modal (janela flutuante) */
+.modal {
+  display: none; /* Esconde a janela por padrão */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5); /* Fundo escuro semitransparente */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.modal-icon {
+  font-size: 30px;
+  color: #f0c33a;
+  margin-right: 15px;
+}
+
+.modal-title {
+  color: #333;
+  margin: 0;
+}
+
+.modal-text {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.modal-body {
+  margin-bottom: 20px;
+}
+
+.modal-body label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.required {
+  color: red;
+}
+
+#justificativaInput {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 80px;
+}
+
+#charCount {
+  font-size: 12px;
+  color: #888;
+  text-align: right;
+  display: block;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-btn.cancel {
+  background-color: #eee;
+  color: #333;
+}
+
+.modal-btn.save {
+  background-color: #0073e6;
+  color: white;
+}
+
+/* Modal (janela flutuante) */
+.modal {
+  display: none; /* Esconde a janela por padrão */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5); /* Fundo escuro semitransparente */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.modal-icon {
+  font-size: 30px;
+  color: #f0c33a;
+  margin-right: 15px;
+}
+
+.modal-title {
+  color: #333;
+  margin: 0;
+}
+
+.modal-text {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.modal-body {
+  margin-bottom: 20px;
+}
+
+.modal-body label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.required {
+  color: red;
+}
+
+#justificativaInput {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 80px;
+}
+
+#charCount {
+  font-size: 12px;
+  color: #888;
+  text-align: right;
+  display: block;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-btn.cancel {
+  background-color: #eee;
+  color: #333;
+}
+
+.modal-btn.save {
+  background-color: #0073e6;
+  color: white;
+}
+
+/*********************
+modal tela cidadã. visualizar protuario
+**********************/
+/* Modal (janela flutuante) */
+.modal {
+  display: none; /* Esconde a janela por padrão */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5); /* Fundo escuro semitransparente */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.modal-icon {
+  font-size: 30px;
+  color: #f0c33a;
+  margin-right: 15px;
+}
+
+.modal-title {
+  color: #333;
+  margin: 0;
+}
+
+.modal-text {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.modal-body {
+  margin-bottom: 20px;
+}
+
+.modal-body label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.required {
+  color: red;
+}
+
+#justificativaInput {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 80px;
+}
+
+#charCount {
+  font-size: 12px;
+  color: #888;
+  text-align: right;
+  display: block;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-btn.cancel {
+  background-color: #eee;
+  color: #333;
+}
+
+.modal-btn.save {
+  background-color: #0073e6;
+  color: white;
+}
+  </style>
+</head>
+<body>
+  <!-- Barra superior -->
+  <header class="top-bar">
+    <div class="gov-logo">
+    <img src="img/LOGO.png" alt="Logo do SICA">
+    <span>SICA</span>
+</div>
+    <nav>
+      <a href="#">PRIVACIDADE</a>
+      <a href="#">SOBRE</a>
+    </nav>
+   <div class="user-info">
+  <div class="user-name">
+    <span>Adrielly dos Reis Carvalhedo</span><br>
+    <small>Sistema Integrado de Crianças Acolidas | EMULTI</small>
+  </div>
+  <!-- Menu oculto -->
+  <div class="user-dropdown">
+    <a href="#">Alterar senha</a>
+    <a href="#">Sobre</a>
+    <a href="#">Termos de uso</a>
+    <a href="index.html">Sair</a>
+  </div>
+</div>
+  </header>
+
+  <main class="container">
+    <!-- Menu lateral -->
+    <aside class="sidebar">
+      <ul>
+    <li><span>👤</span><a href="TelaFila.html"><span class="label">Atendimentos</span></a></li>
+    <li><span>📋</span><span class="label">Cadastrar</span></li>
+    <li><span>🪪</span><a href="cidadao.html"><span class="label">Cidadão</span></a></li>
+    <li><span>👥</span><a href="filas.html"><span class="label">Filas</span></a></li>
+     </ul>
+    </aside>
+
+    <!-- Conteúdo -->
+    <section class="content">
+      <h2>Cidadão</h2>
+
+      <!-- Filtros -->
+      <div class="filters-box">
+        <label>
+          Nome/CID/CPF do cidadão
+          <input type="text" placeholder="Digite nome, CPF ou CID">
+        </label>
+        <label>
+          Data de nascimento
+          <input type="date">
+        </label>
+        <label>
+          Nome da mãe
+          <input type="text">
+        </label>
+        <label>
+          Município de nascimento
+          <select>
+            <option value="">Selecione...</option>
+            <option value="Belem">Belém</option>
+            <option value="Ananindeua">Ananindeua</option>
+            <option value="Marituba">Marituba</option>
+          </select>
+        </label>
+        <div class="filter-actions">
+          <button class="btn-reset">Limpar filtros</button>
+          <button class="btn-add">🔍 Buscar cidadão</button>
+        </div>
+      </div>
+
+      <!-- Cadastros base local -->
+      <h3>Cadastros na base local <small>(1 cidadão encontrado)</small></h3>
+      <div class="citizen-card">
+  <div class="citizen-info">
+    <p class="citizen-name"><strong>Fabricio</strong></p>
+    <div class="citizen-details">
+      <div class="details-column">
+        <p>CPF: ***.456.***-44 | CID: 7080******14</p>
+        <p>Data de nascimento: 17/08/1963 (60 anos)</p>
+        <p>Sexo: Masculino</p>
+        <p>Última atualização: 03/09/2020</p>
+      </div>
+      <div class="details-column">
+        <p>Nome da mãe: Elvina *******</p>
+        <p>Telefone: (91) 99999-9999</p>
+        <p>Município de nascimento: Belém</p>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <button>🔍 Visualizar</button>
+    <div class="action-menu">
+      <button class="menu-btn">⋮</button>
+      <div class="menu-dropdown">
+        <a href="#">Prontuário</a>
+        <a href="#">Editar</a>
+      </div>
+    </div>
+  </div>
+</div>
+    </section>
+  </main>
+
+
+  <!----------------
+  modal visualizar protuario
+  ------------------>
+
+  <div id="justificativaModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <div class="modal-header">
+      <span class="modal-icon">⚠️</span>
+      <h3 class="modal-title">Justificativa para visualizar prontuário</h3>
+    </div>
+    <p class="modal-text">É obrigatória a apresentação de uma justificativa para visualizar o prontuário.</p>
+
+    <div class="modal-body">
+      <label for="justificativaInput">Justificativa <span class="required">*</span></label>
+      <textarea id="justificativaInput" rows="5" maxlength="500" placeholder="Digite sua justificativa aqui..."></textarea>
+      <small id="charCount">0/500 caracteres</small>
+    </div>
+
+    <div class="modal-footer">
+      <button id="cancelBtn" class="modal-btn cancel">Cancelar</button>
+      <button id="saveBtn" class="modal-btn save">Salvar</button>
+    </div>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+<script>
+    
+/*************************************************
+ * modal tela cidadao para visualizar protuario
+*************************************************/
+  document.addEventListener("DOMContentLoaded", function() {
+  const modal = document.getElementById("justificativaModal");
+  const visualizarBtns = document.querySelectorAll(".citizen-card .actions button"); 
+  const closeBtn = document.querySelector(".close-btn");
+  const cancelBtn = document.getElementById("cancelBtn");
+  const saveBtn = document.getElementById("saveBtn");
+  const justificativaInput = document.getElementById("justificativaInput");
+  const charCount = document.getElementById("charCount");
+  
+  // Função para abrir o modal
+  function openModal() {
+    modal.style.display = "flex";
+  }
+
+  // Função para fechar o modal
+  function closeModal() {
+    modal.style.display = "none";
+  }
+
+  // Adiciona evento de clique para cada botão dentro de .actions
+  visualizarBtns.forEach(btn => {
+    btn.addEventListener("click", function() {
+      // Verifica se o texto do botão é "🔍 Visualizar"
+      if (btn.textContent.includes("Visualizar")) {
+        openModal();
+      }
+    });
+  });
+  
+  // Eventos para fechar o modal
+  closeBtn.addEventListener("click", closeModal);
+  cancelBtn.addEventListener("click", closeModal);
+  
+  // Fecha o modal se o usuário clicar fora dele
+  window.addEventListener("click", function(event) {
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Validação e ação do botão "Salvar"
+  saveBtn.addEventListener("click", function() {
+    if (justificativaInput.value.trim() === "") {
+      alert("Por favor, adicione uma justificativa para continuar.");
+      justificativaInput.focus();
+    } else {
+      alert("Justificativa salva com sucesso!");
+      // Aqui você adicionaria a lógica para redirecionar para o prontuário
+      // Exemplo: window.location.href = "prontuario.html";
+      closeModal();
+    }
+  });
+
+  // Contagem de caracteres em tempo real
+  justificativaInput.addEventListener("input", function() {
+    const currentLength = justificativaInput.value.length;
+    charCount.textContent = `${currentLength}/500 caracteres`;
+  });
+});
+</script>
+</body>
+</html>

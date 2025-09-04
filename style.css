@@ -1,0 +1,426 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f5f5f5;
+  color: #333;
+}
+/* Estilo para o container da logo */
+.gov-logo {
+  display: flex;
+  align-items: center; /* Alinha a imagem e o texto verticalmente */
+  gap: 10px; /* Adiciona um espaço de 10px entre a imagem e o texto */
+  font-size: 18px; /* Defina o tamanho da fonte para o texto "SICA" */
+  font-weight: bold;
+}
+
+/* Estilo para a imagem da logo */
+.gov-logo img {
+  height: 30px; /* Define a altura da imagem. Ajuste conforme necessário */
+  width: auto; /* Mantém a proporção da imagem */
+}
+.top-bar {
+  background: #0b2746;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  font-size: 12px;
+}
+
+.top-bar nav a {
+  margin: 0 8px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  height: calc(100vh - 40px);
+}
+
+.login-box {
+  width: 35%;
+  background: white;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  color: #0b2746;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+input {
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  display: none;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  background: #0073e6;
+  color: white;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #005bb5;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 12px;
+  color: #555;
+}
+
+.image-box {
+  width: 60%;
+  position: relative;
+}
+
+.image-box img {
+  width: 110%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.credito {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.8);
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/*---------------------------
+TELA DE FILA 
+-----------------------------*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f5f5f5;
+  color: #333;
+}
+
+/* Barra superior */
+.top-bar {
+  background: #2a2f74;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  font-size: 13px;
+}
+
+.top-bar nav a {
+  margin: 0 8px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+/* Dropdown do usuário */
+.user-info {
+  position: relative;
+  text-align: right;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.user-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: #fff;
+  color: #000;
+  min-width: 220px;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.user-dropdown a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #000;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+
+.user-dropdown a:hover {
+  background: #f1f1f1;
+}
+
+/* Mostra o menu ao passar o mouse */
+.user-info:hover .user-dropdown {
+  display: block;
+}
+
+
+/* Layout principal */
+.container {
+  display: flex;
+  height: calc(100vh - 40px);
+}
+
+/* Sidebar */
+/* Sidebar fechada por padrão */
+.sidebar {
+  width: 60px; /* apenas ícones */
+  background: #fff;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* alinhar conteúdo à esquerda */
+  padding: 10px 0;
+  transition: width 0.3s ease; /* animação suave */
+  overflow: hidden; /* esconde os textos quando fechado */
+}
+
+.sidebar ul {
+  list-style: none;
+  width: 100%;
+}
+
+.sidebar li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.sidebar li:hover {
+  background: #f1f1f1;
+}
+.sidebar ul li a {
+  text-decoration: none; /* Remove o sublinhado */
+  color: inherit;        /* Faz com que a cor seja a mesma do item da lista */
+}
+.sidebar .label {
+  opacity: 0;
+  white-space: nowrap; /* evita quebra de linha */
+  transition: opacity 0.3s ease;
+}
+
+/* Quando passar o mouse sobre a sidebar */
+.sidebar:hover {
+  width: 200px; /* expande */
+}
+
+.sidebar:hover .label {
+  opacity: 1; /* mostra os nomes */
+}
+
+
+/* Conteúdo */
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+.btn-add {
+  background: #005bb5;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.btn-add:hover {
+  background: #004494;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.search-bar input[type="text"] {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn-filter, .btn-reset {
+  background: #eee;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  color:black;
+}
+
+.status-info {
+  font-size: 13px;
+  margin: 10px 0;
+}
+
+/* Lista de atendimentos */
+.list {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  margin: 15px 0;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 120px 1fr 200px 200px 100px;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.time {
+  border-left: 4px solid green;
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.patient {
+  font-size: 14px;
+}
+
+.type {
+  font-size: 14px;
+  text-align: center;
+}
+
+.professional {
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
+}
+
+.actions button {
+  background: #fcfcfc;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  color:black;
+}
+
+/* Menu de ações (⋮) */
+.action-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-btn {
+  background: #fcfcfc;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: #fff;
+  color: #000;
+  min-width: 140px;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  z-index: 2000;
+}
+
+.menu-dropdown a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #000;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+
+.menu-dropdown a:hover {
+  background: #f1f1f1;
+}
+
+/* mostra o menu quando a classe 'open' estiver presente */
+.menu-dropdown.open {
+  display: block;
+}
+
+
+.results {
+  font-size: 13px;
+  color: #666;
+}
+
