@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filas</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+/* Conteúdo */
+.content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+/* Formulário */
+.cadastro-form {
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.cadastro-form fieldset {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.cadastro-form legend {
+  font-weight: bold;
+  font-size: 15px;
+  color: #2a2f74;
+  padding: 0 8px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px 25px;
+  margin-top: 15px;
+}
+
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-grid input,
+.form-grid select,
+.form-grid textarea {
+  margin-top: 6px;
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 100%;
+}
+
+
+.radio-label input,
+.radio-label input + * {
+  font-weight: normal; /* deixa os textos dos rádios normais */
+}
+
+textarea {
+  resize: vertical;
+  min-height: auto;
+}
+
+fieldset legend {
+  font-weight: bold;
+}
+
+fieldset:last-of-type label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+fieldset:last-of-type textarea {
+  width: auto;
+  min-height: auto;
+}
+
+fieldset:last-of-type input[type="text"] {
+  max-width: 300px;
+}
+
+.cadastro-form h4 {
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #2a2f74;
+}
+
+/* Botões */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.btn-save {
+  background: #2a2f74;
+  color: #fff;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn-save:hover {
+  background: #1d2156;
+}
+
+.btn-cancel {
+  background: #ccc;
+  color: #000;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-cancel:hover {
+  background: #aaa;
+}
+.radio-text {
+  font-weight: bold; /* Aplica negrito somente ao texto da pergunta */
+}
+
+/* Opcional: Remova o negrito do radio-label se estiver lá */
+.radio-label {
+  font-weight: normal; 
+}
+
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="gov-logo">
+      <img src="img/LOGO.png" alt="Logo do SICA">
+      <span>SICA</span>
+    </div>
+    <nav>
+      <a href="#">PRIVACIDADE</a>
+      <a href="#">SOBRE</a>
+    </nav>
+    <div class="user-info">
+      <div class="user-name">
+        <span>Adrielly dos Reis Carvalhedo</span><br>
+        <small>Sistema Integrado de Crianças Acolidas | EMULTI</small>
+      </div>
+      <div class="user-dropdown">
+        <a href="#">Alterar senha</a>
+        <a href="#">Sobre</a>
+        <a href="#">Termos de uso</a>
+        <a href="index.html">Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <aside class="sidebar">
+      <ul>
+        <li><span>👤</span><a href="TelaFila.html"><span class="label">Atendimentos</span></a></li>
+        <li><span>📋</span><a href="Cadastro.html"><span class="label">Cadastrar</span></a></li>
+        <li><span>🪪</span><a href="cidadao.html"><span class="label">Cidadão</span></a></li>
+        <li><span>👥</span><a href="filas.html"><span class="label">Filas</span></a></li>
+      </ul>
+    </aside>
+
+       
+   
+   <!-- Área de conteúdo -->
+    <section class="content">
+      <h2>Cadastro do Cidadão</h2>
+      <form id="cadastroForm" class="cadastro-form">
+        
+        <!-- Página 1 -->
+        <fieldset>
+          <legend>Dados de Identificação</legend>
+          <div class="form-grid">
+            <label>Data: <input type="date" name="data"></label>
+            <label>Aluno(a): <input type="text" name="aluno"></label>
+            <label>CPF: <input type="text" name="cpf"></label>
+            <label>Data de Nascimento: <input type="date" name="dn"></label>
+            <label>Idade: <input type="number" name="idade"></label>
+            <label>NIS: <input type="text" name="nis"></label>
+            <label>SUS: <input type="text" name="sus"></label>
+            <label>Escolaridade: <input type="text" name="escolaridade"></label>
+            <label>Ensino regular: <input type="text" name="ensino_regular"></label>
+            <label>Turno: <input type="text" name="turno"></label>
+            <label>Encaminhamento de: <input type="text" name="encaminhamento"></label>
+            <label>Escola AEE: <input type="text" name="escola_aee"></label>
+            <label>Professor(a) AEE: <input type="text" name="prof_aee"></label>
+            <label>Cuidador(a): <input type="text" name="cuidador"></label>
+            <label>Telefone: <input type="tel" name="tel"></label>
+          </div>
+
+          <div>
+            <label class="radio-label">
+  <span class="radio-text">CIPTEA:</span>
+  <input type="radio" name="ciptea" value="sim"> Sim
+  <input type="radio" name="ciptea" value="nao"> Não
+</label>
+<br>
+<label class="radio-label">
+  <span class="radio-text">PASSE:</span>
+  <input type="radio" name="passe" value="sim"> Sim
+  <input type="radio" name="passe" value="nao"> Não
+</label>
+          </div>
+
+          <h4>Nomes de Referência na Família</h4>
+          <div class="form-grid">
+            <label>1º Nome: <input type="text" name="ref1"></label>
+            <label>Apelido: <input type="text" name="apelido1"></label>
+            <label>2º Nome: <input type="text" name="ref2"></label>
+            <label>Apelido: <input type="text" name="apelido2"></label>
+          </div>
+
+          <h4>Endereço</h4>
+          <div class="form-grid">
+            <label>Endereço Residencial: <input type="text" name="endereco"></label>
+            <label>Bairro: <input type="text" name="bairro"></label>
+            <label>Complemento: <input type="text" name="complemento"></label>
+            <label>Naturalidade: <input type="text" name="naturalidade"></label>
+            <label>RG: <input type="text" name="rg"></label>
+            <label>CPF: <input type="text" name="cpf_resp"></label>
+            <label>Título de Eleitor: <input type="text" name="titulo"></label>
+            <label>Telefone: <input type="tel" name="tel_resp"></label>
+            <label>Profissão: <input type="text" name="profissao"></label>
+            <label>Local de Trabalho: <input type="text" name="trabalho"></label>
+            <label>Renda mensal: <input type="text" name="renda"></label>
+          </div><br>
+
+          <label>Estado Civil:
+            <select name="estado_civil">
+              <option>Solteiro(a)</option>
+              <option>Casado(a)</option>
+              <option>União estável</option>
+            </select>
+          </label>
+
+          <label>Religião:
+            <select name="religiao">
+              <option>Católica</option>
+              <option>Evangélica</option>
+              <option>Testemunha de Jeová</option>
+              <option>Matriz Africana</option>
+              <option>Outras</option>
+            </select>
+          </label>
+
+          <h4>Filiação</h4>
+          <div class="form-grid">
+            <label>Mãe: <input type="text" name="mae"></label>
+            <label>Pai: <input type="text" name="pai"></label>
+          </div><br>
+
+          <label>Demanda: <textarea name="demanda"></textarea></label>
+
+          <label>Necessita as cópias: <textarea name="copias"></textarea></label>
+        </fieldset>
+
+        <!-- Página 2 -->
+        <fieldset>
+          <legend>Particularidades do Grupo Familiar</legend>
+          <div class="form-grid">
+            <label>Idoso na família? <input type="text" name="idoso"></label>
+            <label>Recebem benefício? <input type="text" name="beneficio"></label>
+            <label>Mulheres grávidas? <input type="text" name="gravidas"></label>
+            <label>Mulheres amamentando? <input type="text" name="amamentando"></label>
+            <label>Pessoas com deficiência? <input type="text" name="pcd"></label>
+            <label>Nome: <input type="text" name="nome_pcd"></label>
+            <label>Grau de parentesco: <input type="text" name="grau"></label>
+            <label>Doença ou deficiência: <input type="text" name="doenca"></label>
+            <label>Despesa mensal: <input type="text" name="despesa"></label>
+          </div>
+          <label class="radio-label">
+  <span class="radio-text">Pessoa com deficiência recebe benefício?</span>
+            <input type="radio" name="pcd_beneficio" value="sim"> Sim
+            <input type="radio" name="pcd_beneficio" value="nao"> Não
+          </label>
+
+          <label class="radio-label">
+  <span class="radio-text">Uso abusivo de álcool/drogas:</span>
+            <input type="radio" name="alcool" value="sim"> Sim
+            <input type="radio" name="alcool" value="nao"> Não
+          </label>
+<br>
+          <label class="radio-label">
+  <span class="radio-text">Doença crônica na família?</span>
+            <input type="radio" name="cronica" value="sim"> Sim
+            <input type="radio" name="cronica" value="nao"> Não
+          </label>
+          <label>Qual? <input type="text" name="cronica_qual"></label>
+<br>
+          <label>Especificidades socioculturais:<br>
+            <textarea name="socioculturais"></textarea>
+          </label>
+          <br>
+        </fieldset>
+
+        <!-- Página 3 -->
+        <fieldset>
+          <legend>Características do Domicílio</legend>
+          <label>Moradia:
+            <select name="moradia">
+              <option>Própria</option>
+              <option>Alugada</option>
+              <option>Cedida</option>
+              <option>Construção</option>
+              <option>Outros</option>
+            </select>
+          </label>
+
+          <label>Tipo:
+            <select name="tipo_casa">
+              <option>Casa</option>
+              <option>Kitnet</option>
+              <option>Barraca</option>
+            </select>
+          </label>
+          <label>Nº de Cômodos: <input type="number" name="comodos"></label>
+          <label>Área:
+            <select name="area">
+              <option>Urbano</option>
+              <option>Rural - Terrestre</option>
+              <option>Rural - Fluvial</option>
+            </select>
+          </label>
+          <label>Quantidade de moradores: <input type="number" name="moradores"></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Água, Esgoto e Lixo</legend>
+          <label>Abastecimento de água:
+            <select name="agua">
+              <option>Pública</option>
+              <option>Poço simples</option>
+              <option>Poço artesiano</option>
+              <option>Nascente</option>
+              <option>Igarapé</option>
+              <option>Outros</option>
+            </select>
+          </label>
+          <label>Tratamento de água:
+            <select name="tratamento">
+              <option>Filtração</option>
+              <option>Fervura</option>
+              <option>Cloração</option>
+              <option>Nenhum</option>
+              <option>Outros</option>
+            </select>
+          </label>
+          <label>Esgotamento sanitário:
+            <select name="esgoto">
+              <option>Rede pública</option>
+              <option>Fossa séptica</option>
+              <option>Céu aberto</option>
+              <option>Outros</option>
+            </select>
+          </label>
+          <label>Destino do lixo:
+            <select name="lixo">
+              <option>Coletado</option>
+              <option>Enterrado</option>
+              <option>Queimado</option>
+              <option>Outros</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Observações</legend>
+          <label>Potencialidades da família: <textarea name="potencialidades"></textarea></label>
+          <label>Recursos do território: <textarea name="recursos"></textarea></label>
+          <label>Eixos de intervenção: <textarea name="eixos"></textarea></label>
+          <label>Parecer do assistente social: <textarea name="parecer"></textarea></label>
+          <label>Elaboração do plano (equipe): <textarea name="plano"></textarea></label>
+          <label>Assinatura do responsável: <input type="text" name="assinatura"></label>
+        </fieldset>
+
+        <!-- Botões -->
+        <div class="form-actions">
+          <button type="reset" class="btn-cancel">Cancelar</button>
+          <button type="submit" class="btn-save">Salvar</button>
+        </div>
+      </form>
+    </section>
+
+    
+  </main>
+</body>
+</html>
+
